@@ -1,0 +1,22 @@
+# Template per-experiment config (placeholders). Copy to a new name and fill in
+# the paths / hyperparameters for your run. For a concrete reference, see
+# `video2act_example.yml` (multi-task production example).
+
+model: video2act_template
+data_path:
+  - /path/to/processed_data/task_name-aloha-agilex_clean_50-50_wan22_832x480
+config_path: configs/video2act_template.yaml   # architecture / WAN paths
+checkpoint_path: checkpoints/video2act_template
+pretrained_model_name_or_path: /path/to/rdt-1b-or-video2act-checkpoint
+cuda_visible_device: "0"
+train_batch_size: 1
+sample_batch_size: 1
+max_train_steps: 1000
+checkpointing_period: 500
+sample_period: 100
+checkpoints_total_limit: 3
+learning_rate: 1.0e-4
+dataloader_num_workers: 4
+state_noise_snr: 40
+gradient_accumulation_steps: 1
+fixed_lang_embed: true

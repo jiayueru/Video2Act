@@ -1,0 +1,16 @@
+processed_data/
+training_data/
+checkpoints/
+logs/
+wandb/
+cache/
+.wandb_api_key
+run_scripts/.wandb_api_key
+*.log
+*.pt
+*.pth
+*.bin
+*.safetensors
+*.ckpt
+!models/
+!data/

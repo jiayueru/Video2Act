@@ -1,0 +1,21 @@
+# Basic experiment configuration
+policy_name: null
+task_name: null
+task_config: null
+ckpt_setting: null
+seed: null
+instruction_type: unseen
+policy_conda_env: null
+
+checkpoint_id: null
+action_step: 64
+test_num: 100
+model_config_path: null
+fixed_lang_embed: false
+fixed_lang_embed_path: null
+fixed_wan_text_embed_path: null
+
+# optional: log eval results to wandb (project defaults to env WANDB_PROJECT, else rdt_2.0)
+use_wandb: false
+wandb_project: null
+wandb_run_name: null

@@ -1,0 +1,97 @@
+common:
+  img_history_size: 2
+  action_chunk_size: 64
+  num_cameras: 3
+  state_dim: 128
+  latent_window_size_past: 0
+  latent_window_size_future: 0
+  latent_interval: 1
+  sparse_img_history_size: 61
+  sparse_img_interval: 1
+
+dataset:
+  buf_path: /path/to/buffer
+  buf_num_chunks: 512
+  buf_chunk_size: 512
+  epsd_len_thresh_low: 32
+  epsd_len_thresh_high: 2048
+  image_aspect_ratio: pad
+  tokenizer_max_length: 1024
+
+model:
+  use_framepack: true
+  lang_adaptor: mlp2x_gelu
+  img_adaptor: mlp2x_gelu
+  state_adaptor: mlp3x_gelu
+  framepack_adaptor: mlp2x_gelu
+  framepack_encoder_adaptor: mlp2x_gelu
+  lang_token_dim: 4096
+  img_token_dim: 1152
+  state_token_dim: 128
+  framepack_encoder_token_num: 1241
+  framepack_encoder_token_dim: 3072
+  use_framepack_compression: true
+  framepack_compressed_dim: 3072
+  framepack_compressed_tokens: 1174
+  token_compressor_depth: 0
+  token_compressor_heads: 8
+  use_dual_stream_framepack: true
+  dual_stream_framepack:
+    raw_stream:
+      num_frames: 1
+      video_size: [480, 832]
+      extraction: sobel
+    motion_stream:
+      num_frames: 61
+      latent_num_frames: 16
+      video_size: [224, 224]
+      extraction: fft
+  core:
+    hidden_size: 2048
+    depth: 28
+    num_heads: 32
+    cond_pos_embed_type: multimodal
+    motion_dim: 3072
+    motion_cond_len: 1174
+  noise_scheduler:
+    type: ddpm
+    num_train_timesteps: 1000
+    num_inference_timesteps: 5
+    beta_schedule: squaredcos_cap_v2
+    prediction_type: sample
+    clip_sample: false
+  ema:
+    enabled: true
+    update_after_step: 0
+    inv_gamma: 1.0
+    power: 0.75
+    min_value: 0.0
+    max_value: 0.9999
+
+framepack:
+  dit_path: ${VIDEO2ACT_WAN_DIT_PATH}
+  vae_path: ${VIDEO2ACT_WAN_VAE_PATH}
+  text_encoder1_path: ${VIDEO2ACT_WAN_TEXT_ENCODER_PATH}
+  text_encoder2_path: null
+  tokenizer_path: ${VIDEO2ACT_WAN_TOKENIZER_PATH}
+  video_size: [480, 832]
+  fps: 16
+  guidance_scale: 1.0
+  latent_window_size: 1
+  num_single_layers: 0
+  attn_mode: torch
+  vae_chunk_size: 32
+  vae_spatial_tile_sample_min_size: 128
+  # Slow-fast WAN feature cache (eval-only).
+  # WAN feature extraction dominates inference cost; with enable_cache the
+  # adapted_hidden_states are cached and reused for cache_ratio - 1 calls
+  # before recomputing. Set both to enable; ratio is 1:N (e.g. 1:16 = recompute
+  # once every 16 calls). Override at launch with env var VIDEO2ACT_CACHE_RATIO=N
+  # (also implies enable_cache=true).
+  enable_cache: false
+  cache_ratio: 8
+  motion_extraction:
+    filter_type: bandpass
+    freq_low: 1.0
+    freq_high: 7.0
+    prop_motion: 0.04

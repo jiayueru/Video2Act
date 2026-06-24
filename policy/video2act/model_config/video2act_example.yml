@@ -1,0 +1,41 @@
+# Concrete multi-task example: 20 RoboTwin tasks at 832x480, 8-GPU training.
+# Copy this and adjust paths/hyperparameters for your own run. For an empty
+# starting point with placeholder paths, see `video2act_template.yml`.
+
+model: video2act_20tasks_example
+data_path:
+  - /path/to/processed_data/beat_block_hammer-aloha-agilex_clean_50-50_wan22_832x480
+  - /path/to/processed_data/click_bell-aloha-agilex_clean_50-50_wan22_832x480
+  - /path/to/processed_data/place_object_basket-aloha-agilex_clean_50-50_wan22_832x480
+  - /path/to/processed_data/hanging_mug-aloha-agilex_clean_50-50_wan22_832x480
+  - /path/to/processed_data/place_empty_cup-aloha-agilex_clean_50-50_wan22_832x480
+  - /path/to/processed_data/adjust_bottle-aloha-agilex_clean_50-50_wan22_832x480
+  - /path/to/processed_data/handover_mic-aloha-agilex_clean_50-50_wan22_832x480
+  - /path/to/processed_data/place_shoe-aloha-agilex_clean_50-50_wan22_832x480
+  - /path/to/processed_data/handover_block-aloha-agilex_clean_50-50_wan22_832x480
+  - /path/to/processed_data/turn_switch-aloha-agilex_clean_50-50_wan22_832x480
+  - /path/to/processed_data/click_alarmclock-aloha-agilex_clean_50-50_wan22_832x480
+  - /path/to/processed_data/place_burger_fries-aloha-agilex_clean_50-50_wan22_832x480
+  - /path/to/processed_data/dump_bin_bigbin-aloha-agilex_clean_50-50_wan22_832x480
+  - /path/to/processed_data/pick_dual_bottles-aloha-agilex_clean_50-50_wan22_832x480
+  - /path/to/processed_data/shake_bottle_horizontally-aloha-agilex_clean_50-50_wan22_832x480
+  - /path/to/processed_data/move_playingcard_away-aloha-agilex_clean_50-50_wan22_832x480
+  - /path/to/processed_data/stack_bowls_three-aloha-agilex_clean_50-50_wan22_832x480
+  - /path/to/processed_data/press_stapler-aloha-agilex_clean_50-50_wan22_832x480
+  - /path/to/processed_data/stack_bowls_two-aloha-agilex_clean_50-50_wan22_832x480
+  - /path/to/processed_data/rotate_qrcode-aloha-agilex_clean_50-50_wan22_832x480
+config_path: configs/video2act_example.yaml   # annotated 20-task architecture config
+checkpoint_path: checkpoints/video2act_20tasks_example
+pretrained_model_name_or_path: /path/to/rdt-1b
+cuda_visible_device: "0,1,2,3,4,5,6,7"
+train_batch_size: 16
+sample_batch_size: 8
+max_train_steps: 60000
+checkpointing_period: 2000
+sample_period: 100
+checkpoints_total_limit: 2000
+learning_rate: 0.0001
+dataloader_num_workers: 2
+state_noise_snr: 40
+gradient_accumulation_steps: 1
+fixed_lang_embed: true
