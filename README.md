@@ -4,6 +4,8 @@
 
 <a href="https://arxiv.org/abs/2512.03044"><img src="https://img.shields.io/badge/arXiv-2512.03044-b31b1b.svg"></a> &nbsp;
 <a href="https://video2act.github.io/"><img src="https://img.shields.io/badge/Project-Video2Act-blue"></a> &nbsp;
+<a href="https://www.youtube.com/watch?v=QIlHELQ4JMI"><img src="https://img.shields.io/badge/Video-YouTube-red" alt="Watch the project video on YouTube"></a> &nbsp;
+<a href="https://www.bilibili.com/video/BV1ZkSEBgEaS/"><img src="https://img.shields.io/badge/Video-Bilibili-ff69b4" alt="Watch the project video on Bilibili"></a> &nbsp;
 <a href="https://github.com/robotwin-Platform/RoboTwin"><img src="https://img.shields.io/badge/Built%20on-RoboTwin-green"></a>
 
 [Yueru Jia](https://jiayueru.github.io/)<sup>1,2*</sup>, [Jiaming Liu](https://liujiaming1996.github.io/)<sup>1,2*</sup>, [Shengbang Liu](https://liushb9.github.io/)<sup>3*</sup>, [Rui Zhou](https://zhourui9813.github.io/)<sup>4</sup>, [Wanhe Yu](https://tongclass.ac.cn/author/wanhe-yu/)<sup>1</sup>, [Yuyang Yan](https://github.com/avx34/)<sup>1</sup>, [Xiaowei Chi](https://litwellchi.github.io/)<sup>5</sup>,  
@@ -42,11 +44,15 @@ This repository contains the RoboTwin implementation of **Video2Act: A Dual-Syst
 
 ![Pipeline](assets/pipeline.gif)
 
+Watch the project video: [YouTube](https://www.youtube.com/watch?v=QIlHELQ4JMI) · [Bilibili](https://www.bilibili.com/video/BV1ZkSEBgEaS/).
+
 </div>
 
 ## News
 
 - **[2026.06.24]** We prepare the RoboTwin Video2Act policy release.
+- **Media coverage:** [机器人前瞻 / 智东西](https://zhidx.com/p/565916.html) discusses Video2Act and the integration of world models with VLA.
+- **Media coverage:** [QbitAI (量子位)](https://www.qbitai.com/2026/04/405325.html) mentions Video2Act in its coverage of the AlphaBrain Platform.
 
 ## Overview
 
